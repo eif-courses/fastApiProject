@@ -3,6 +3,7 @@ import datetime
 from sqlalchemy import Column, Integer, String, DateTime, ARRAY
 
 from ecommerce.db import Base
+from ecommerce.user import hashing
 
 
 class User(Base):
@@ -15,3 +16,12 @@ class User(Base):
     age = Column(Integer)
     permissions = Column(ARRAY(String(255)))
     created_at = Column(DateTime, default=datetime.datetime.now())
+
+    def __init_(self, username, password, email, *args, **kwargs):
+        self.username = username
+        self.password = hashing.get_password_hash(password)
+        self.email = email
+
+    def check_password(self, password):
+        return hashing.verify_password(self.password, password)
+
