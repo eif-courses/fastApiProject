@@ -18,6 +18,7 @@ if config.config_file_name is not None:
 from ecommerce import config as config_env
 from ecommerce.db import Base
 from ecommerce.user.models import User
+from ecommerce.products.models import Product
 
 
 
