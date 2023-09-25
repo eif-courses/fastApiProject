@@ -23,6 +23,7 @@ class Product(Base):
 
     category_id = Column(Integer, ForeignKey('category.id', ondelete="CASCADE"))
     category = relationship("Category", back_populates="product")
+    cart_items = relationship("CartItems", back_populates="products")
 
 
 

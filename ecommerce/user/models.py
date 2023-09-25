@@ -1,6 +1,7 @@
 import datetime
 
 from sqlalchemy import Column, Integer, String, DateTime, ARRAY
+from sqlalchemy.orm import relationship
 
 from ecommerce.db import Base
 from ecommerce.user import hashing
@@ -16,7 +17,7 @@ class User(Base):
     age = Column(Integer)
     permissions = Column(ARRAY(String(255)))
     created_at = Column(DateTime, default=datetime.datetime.now())
-
+    cart = relationship("Cart", back_populates="user_cart")
     def __init_(self, username, password, email, *args, **kwargs):
         self.username = username
         self.password = hashing.get_password_hash(password)
