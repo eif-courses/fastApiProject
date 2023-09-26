@@ -2,16 +2,16 @@
 FROM python:3.9
 
 #
-WORKDIR /custom
+WORKDIR /fastApiProject
 
 #
-COPY ./requirements.txt /custom/requirements.txt
+COPY ./requirements.txt /fastApiProject/requirements.txt
 
 #
-RUN pip install --no-cache-dir --upgrade -r /custom/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r /fastApiProject/requirements.txt
 
 #
-COPY ./fastApiProject /custom/fastApiProject
+COPY ./app /fastApiProject/app
 
 #
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
