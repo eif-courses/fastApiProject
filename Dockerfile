@@ -14,4 +14,4 @@ RUN pip install --no-cache-dir --upgrade -r /fastApiProject/requirements.txt
 COPY ./fastApiProject /code/fastApiProject
 
 #
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
